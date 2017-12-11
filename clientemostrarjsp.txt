@@ -1,0 +1,46 @@
+<%-- 
+    Document   : clientemostrar
+    Created on : 11-dic-2017, 16:21:18
+    Author     : Erik
+--%>
+
+<%@page import="java.util.ArrayList"%>
+<%@page import="modelo.Cliente"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <h1>Clientes</h1>
+        <% ArrayList<Cliente> milistacliente = (ArrayList<Cliente>)request.getAttribute("milistacliente");%>
+        <table>
+        <% for (Cliente client:milistacliente){%>
+        <tr>
+            <td>
+            <% out.println(client.getNombreCliente());%>
+            </td>
+            <td>
+            <% out.println(client.getApellidosCliente());%>   
+            </td>
+            <td>
+            <% out.println(client.getEmailCliente());%>   
+            </td>
+            <td>
+            <% out.println(client.getIbanCliente());%>   
+            </td>
+            <td>
+                <a href="clientemodificarcontroller?id=<% out.println(client.getIdcliente()); %>">Modificar</a>  
+            </td>
+            <td>
+                <a href="clienteeliminarcontroller?id=<% out.println(client.getIdcliente()); %>">Eliminar</a>  
+            </td>
+            
+        </tr>       
+        <% } %>
+        </table>
+            <a href="clientecrearcontroller">Crear</a>
+    </body>
+</html>
